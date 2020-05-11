@@ -171,7 +171,7 @@
             this.Controls.Add(this.subject1);
             this.Controls.Add(this.panel1);
             this.Name = "Dashboard";
-            this.Text = "Form1";
+            this.Text = "University";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
