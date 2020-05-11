@@ -147,17 +147,25 @@ namespace University
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int SpecCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
-            try
+            const string message =
+                "Вы уверены, что хотите удалить выбранную запись?";
+            const string caption = "Предупреждение";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                controller.DeleteSpecility(SpecCode);
+                int SpecCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+                try
+                {
+                    controller.DeleteSpecility(SpecCode);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка!" + ex.StackTrace, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                button1_Click(sender, e);
+                MessageBox.Show("Запись успешно удалена!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Ошибка!" + ex.StackTrace, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            button1_Click(sender, e);
-            MessageBox.Show("Запись успешно удалена!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);   
         }
     }
 }
