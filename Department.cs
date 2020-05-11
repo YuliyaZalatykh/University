@@ -97,5 +97,10 @@ namespace University
 
             textBox1.Text = totalAmountOfExams.ToString();
         }
+
+        private void Department_Load(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }

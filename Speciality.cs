@@ -79,5 +79,10 @@ namespace University
             textBox1.Text = firstSemest.ToString();
             textBox2.Text = secondSemest.ToString();
         }
+
+        private void Speciality_Load(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }

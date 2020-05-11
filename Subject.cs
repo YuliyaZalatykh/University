@@ -82,5 +82,10 @@ namespace University
                 dataGridView1.Rows[maxDurationIndex].Cells[i].Style.BackColor = Color.Coral;
             }
         }
+
+        private void Subject_Load(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }
