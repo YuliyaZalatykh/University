@@ -67,7 +67,7 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(632, 590);
+            this.button2.Location = new System.Drawing.Point(652, 590);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 43);
             this.button2.TabIndex = 4;
@@ -96,7 +96,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Coral;
-            this.panel2.Location = new System.Drawing.Point(406, 594);
+            this.panel2.Location = new System.Drawing.Point(423, 594);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(27, 27);
             this.panel2.TabIndex = 7;
@@ -104,7 +104,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.YellowGreen;
-            this.panel3.Location = new System.Drawing.Point(234, 594);
+            this.panel3.Location = new System.Drawing.Point(243, 594);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(27, 27);
             this.panel3.TabIndex = 8;
@@ -112,7 +112,7 @@
             // button3
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(777, 590);
+            this.button3.Location = new System.Drawing.Point(803, 590);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(139, 43);
             this.button3.TabIndex = 9;

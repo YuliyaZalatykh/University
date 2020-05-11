@@ -18,7 +18,7 @@ namespace University
 
         Query controller;
         List<Discipline> disciplines;
-        
+
 
         public Subject()
         {
@@ -30,7 +30,7 @@ namespace University
         {
             DataTable dataTable = controller.UpdateTable("Дисциплина");
             dataGridView1.DataSource = dataTable;
-            
+
             disciplines = new List<Discipline>();
 
             foreach (DataRow row in dataTable.Rows)
@@ -47,7 +47,7 @@ namespace University
                 Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
                 disciplines.Add(discipline);
             }
-            
+
             DataTable dataTable1 = Utils.Utils.ToDataTable(disciplines);
             dataGridView1.DataSource = dataTable1;
 

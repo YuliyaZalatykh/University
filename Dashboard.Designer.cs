@@ -140,8 +140,7 @@
             // 
             // department1
             // 
-            this.department1.BackColor = System.Drawing.Color.Gold;
-            this.department1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.department1.BackColor = System.Drawing.Color.White;
             this.department1.Location = new System.Drawing.Point(238, 0);
             this.department1.Name = "department1";
             this.department1.Size = new System.Drawing.Size(1340, 744);
@@ -149,7 +148,7 @@
             // 
             // speciality1
             // 
-            this.speciality1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.speciality1.BackColor = System.Drawing.Color.White;
             this.speciality1.Location = new System.Drawing.Point(238, 0);
             this.speciality1.Name = "speciality1";
             this.speciality1.Size = new System.Drawing.Size(1340, 744);
@@ -157,8 +156,7 @@
             // 
             // subject1
             // 
-            this.subject1.BackColor = System.Drawing.Color.YellowGreen;
-            this.subject1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subject1.BackColor = System.Drawing.Color.White;
             this.subject1.Location = new System.Drawing.Point(238, 0);
             this.subject1.Name = "subject1";
             this.subject1.Size = new System.Drawing.Size(1340, 744);
