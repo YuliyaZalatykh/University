@@ -102,5 +102,10 @@ namespace University
         {
             button1_Click(sender, e);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button2_Click(sender, e);
+        }
     }
 }

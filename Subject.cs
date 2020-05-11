@@ -87,5 +87,10 @@ namespace University
         {
             button1_Click(sender, e);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }
