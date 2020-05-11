@@ -27,7 +27,6 @@ namespace University.Controller
             dataAdapter = new OleDbDataAdapter(selectQuery, connection);
             bufferTable.Clear();
             dataAdapter.Fill(bufferTable);
-            dataAdapter.Dispose();
             connection.Close();
             return bufferTable;
         }
