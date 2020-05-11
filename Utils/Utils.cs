@@ -47,7 +47,37 @@ namespace University.Utils
                     specialities.Add(speciality);
             }
             return specialities;
-            
+        }
+
+        public static List<BO.Discipline> DisciplineTableToList(DataTable Table)
+        {
+            List<Discipline> disciplines = new List<Discipline>();
+
+            foreach (DataRow row in Table.Rows)
+            {
+                    int Code = int.Parse(row["Код_дисц"].ToString());
+                    string Name = row["Назв_дисц"].ToString();
+                    int Semest = int.Parse(row["Семестры"].ToString());
+                    int Hours = int.Parse(row["Часы"].ToString());
+                    int LabH = int.Parse(row["Лаб_зан"].ToString());
+                    int PractiseH = int.Parse(row["Практ_зан"].ToString());
+                    int CourseH = int.Parse(row["Курсовые"].ToString());
+                    string ReportType = row["Вид_отчет"].ToString();
+                    int SpecCode = int.Parse(row["Код_спец"].ToString());
+
+                    Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
+                    disciplines.Add(discipline);
+            }
+            return disciplines;
+        }
+
+        public static void RenameTableColumns(DataTable table, string columnNames)
+        {
+            string[] columns = columnNames.Split(',');
+            for(int i = 0; i < columns.Length; i++)
+            {
+                table.Columns[i].ColumnName = columns[i];
+            }
         }
     }
 }

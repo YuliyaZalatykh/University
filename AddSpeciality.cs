@@ -34,13 +34,22 @@ namespace University
             try
             {
                 controller.AddSpeciality(SpecCode, Name, Qualification, StudyForm, DeptCode, Duration);
-            }catch(Exception ex)
+                MessageBox.Show("Специальность успешно добавлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Ошибка! Проверьте правильность заполнения полей", ex.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-            MessageBox.Show("Специальность успешно добавлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            clearFields();
+        }
+
+        private void clearFields()
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox6.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -43,58 +43,47 @@ namespace University
         {
             int DepartmentCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["Код_каф"].Value.ToString());
 
+            // найти специальности заданной кафедры
+
             DataTable specialityTable = controller2.UpdateTable("Специальности");
-            List<BO.Speciality> specialities = new List<BO.Speciality>();
+            List<BO.Speciality> specialities = Utils.Utils.SpecialityTableToList(specialityTable);
+            List<BO.Speciality> DeptSpecialities = new List<BO.Speciality>();
 
-            foreach (DataRow SpecialityRow in specialityTable.Rows)
+            foreach (BO.Speciality speciality in specialities)
             {
-                int DeptCode = int.Parse(SpecialityRow["Код_каф"].ToString());
-                if (DepartmentCode == DeptCode)
+                if (DepartmentCode == speciality.DepartmentCode)
                 {
-                    int SpecCode = int.Parse(SpecialityRow["Код_спец"].ToString());
-                    string Name = SpecialityRow["Назв_спец"].ToString();
-                    string Qualification = SpecialityRow["Квалифик"].ToString();
-                    string StudyForm = SpecialityRow["Форма_обуч"].ToString();
-                    int Duration = int.Parse(SpecialityRow["Продолжительность"].ToString());
-
-                    BO.Speciality speciality = new BO.Speciality(SpecCode, Name, Qualification, StudyForm, DeptCode, Duration);
-                    specialities.Add(speciality);
+                    DeptSpecialities.Add(speciality);
                 }
             }
 
 
-            DataTable dataTable = controller3.UpdateTable("Дисциплина");
+            // найти дисциплины заданных специальностей
 
-            List<Discipline> disciplines = new List<Discipline>();
+            DataTable disciplineTable = controller3.UpdateTable("Дисциплина");
+            List<Discipline> disciplines = Utils.Utils.DisciplineTableToList(disciplineTable);
+            List<Discipline> SpecialityDisciplines = new List<Discipline>();
 
             int totalAmountOfExams = 0;
-
-            foreach (BO.Speciality speciality in specialities)
+            
+            foreach (BO.Speciality deptSpeciality in DeptSpecialities)
             {
-                foreach (DataRow row in dataTable.Rows)
+                foreach (Discipline discipline in disciplines)
                 {
-                    int SpecCode = int.Parse(row["Код_спец"].ToString());
-                    if (speciality.Code == SpecCode)
+                    if (deptSpeciality.Code == discipline.SpecCode)
                     {
-                        int Code = int.Parse(row["Код_дисц"].ToString());
-                        string Name = row["Назв_дисц"].ToString();
-                        int Semest = int.Parse(row["Семестры"].ToString());
-                        int Hours = int.Parse(row["Часы"].ToString());
-                        int LabH = int.Parse(row["Лаб_зан"].ToString());
-                        int PractiseH = int.Parse(row["Практ_зан"].ToString());
-                        int CourseH = int.Parse(row["Курсовые"].ToString());
-                        string ReportType = row["Вид_отчет"].ToString();
-
-                        Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
-                        disciplines.Add(discipline);
+                        SpecialityDisciplines.Add(discipline);
+                        // TO DO: пересмотреть таблицу Дисциплина -> поле Тип отчета
                         totalAmountOfExams += int.Parse(discipline.ReportType);
                     }
                 }
             }
 
-            DataTable dataTable2 = Utils.Utils.ToDataTable(disciplines);
-            dataGridView2.DataSource = dataTable2;
-
+            DataTable disciplinesTable = Utils.Utils.ToDataTable(SpecialityDisciplines);
+            Utils.Utils.RenameTableColumns(disciplinesTable,
+                "код дисциплины, название, семестр, часы, лабораторные, " +
+                "практические, курсовые, тип отчета, код специальности");
+            dataGridView2.DataSource = disciplinesTable;
 
             textBox1.Text = totalAmountOfExams.ToString();
         }

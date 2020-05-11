@@ -49,6 +49,9 @@ namespace University
             }
 
             DataTable dataTable1 = Utils.Utils.ToDataTable(disciplines);
+            Utils.Utils.RenameTableColumns(dataTable1,
+                "код дисциплины, название, семестр, часы, лабораторные, " +
+                "практические, курсовые, тип отчета, код специальности");
             dataGridView1.DataSource = dataTable1;
 
         }
