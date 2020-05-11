@@ -66,6 +66,8 @@ namespace University
 
             List<Discipline> disciplines = new List<Discipline>();
 
+            int totalAmountOfExams = 0;
+
             foreach (BO.Speciality speciality in specialities)
             {
                 foreach (DataRow row in dataTable.Rows)
@@ -84,12 +86,16 @@ namespace University
 
                         Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
                         disciplines.Add(discipline);
+                        totalAmountOfExams += int.Parse(discipline.ReportType);
                     }
                 }
             }
 
             DataTable dataTable2 = Utils.Utils.ToDataTable(disciplines);
             dataGridView2.DataSource = dataTable2;
+
+
+            textBox1.Text = totalAmountOfExams.ToString();
         }
     }
 }
