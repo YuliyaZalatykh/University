@@ -61,6 +61,17 @@ namespace University
 
             DataTable dataTable2 = Utils.Utils.ToDataTable(disciplines);
             dataGridView2.DataSource = dataTable2;
+
+            int labHoursAmount = 0;
+            int semestAmount = 0;
+            foreach (Discipline discipline in disciplines)
+            {
+                labHoursAmount += discipline.LabH;
+                semestAmount += discipline.Semest;
+            }
+
+            textBox1.Text = labHoursAmount.ToString();
+            textBox2.Text = semestAmount.ToString();
         }
     }
 }
