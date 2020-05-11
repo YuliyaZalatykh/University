@@ -17,6 +17,8 @@ namespace University
     {
 
         Query controller;
+        List<Discipline> disciplines;
+        
 
         public Subject()
         {
@@ -28,8 +30,8 @@ namespace University
         {
             DataTable dataTable = controller.UpdateTable("Дисциплина");
             dataGridView1.DataSource = dataTable;
-
-            List<Discipline> disciplines = new List<Discipline>();
+            
+            disciplines = new List<Discipline>();
 
             foreach (DataRow row in dataTable.Rows)
             {
@@ -45,13 +47,40 @@ namespace University
                 Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
                 disciplines.Add(discipline);
             }
-            textBox1.Text = disciplines[1].Name;
-            
-            disciplines.Remove(disciplines[1]);
             
             DataTable dataTable1 = Utils.Utils.ToDataTable(disciplines);
             dataGridView1.DataSource = dataTable1;
-            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int minDuration = int.MaxValue;
+            int minDurationIndex = 0;
+            int maxDuration = int.MinValue;
+            int maxDurationIndex = 0;
+
+            // перебрать дисциплины и найти мин и макс часы
+            for(int i = 0; i < disciplines.Count; i++) 
+            {
+                if(disciplines[i].Hours < minDuration)
+                {
+                    minDuration = disciplines[i].Hours;
+                    minDurationIndex = i;
+                }
+                if(disciplines[i].Hours > maxDuration)
+                {
+                    maxDuration = disciplines[i].Hours;
+                    maxDurationIndex = i;
+                }
+            }
+
+            // раскрасить строки таблицы
+            for (int i = 0; i < 9; i++)
+            {
+                dataGridView1.Rows[minDurationIndex].Cells[i].Style.BackColor = Color.GreenYellow;
+                dataGridView1.Rows[maxDurationIndex].Cells[i].Style.BackColor = Color.Coral;
+            }
         }
     }
 }
