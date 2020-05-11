@@ -30,13 +30,13 @@ namespace University
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.UpdateTable("Специальности");
+            DataTable dataTable = controller.UpdateTable("Специальность");
             dataGridView1.DataSource = dataTable;
         }
 
         public void displayDisciplinesAndTotal()
         {
-            int SpecialityCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["Код_спец"].Value.ToString());
+            int SpecialityCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["код специальности"].Value.ToString());
 
             DataTable dataTable = controller2.UpdateTable("Дисциплина");
 

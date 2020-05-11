@@ -34,7 +34,7 @@ namespace University.Controller
         public void AddSpeciality(int SpecCode, string Name, string Qualification, string StudyForm, int DeptCode, int Duration)
         {
             connection.Open();
-            command = new OleDbCommand($"INSERT INTO Специальности(Код_спец, Назв_спец, Квалифик, Форма_обуч, Код_каф, Продолжительность) VALUES(@SpecCode, @Name, @Qualification, @StudyForm, @DeptCode, @Duration)", connection);
+            command = new OleDbCommand($"INSERT INTO Специальность([код специальности], название, квалификация, [форма обучения], [код кафедры], продолжительность) VALUES(@SpecCode, @Name, @Qualification, @StudyForm, @DeptCode, @Duration)", connection);
             command.Parameters.AddWithValue("SpecCode", SpecCode);
             command.Parameters.AddWithValue("Name", Name);
             command.Parameters.AddWithValue("Qualification", Qualification);
@@ -48,7 +48,7 @@ namespace University.Controller
         public void DeleteSpecility(int SpecCode)
         {
             connection.Open();
-            command = new OleDbCommand($"DELETE FROM Специальности WHERE Код_спец = {SpecCode}", connection);
+            command = new OleDbCommand($"DELETE FROM Специальность WHERE [код специальности] = {SpecCode}", connection);
             command.ExecuteNonQuery();
             connection.Close();
         }

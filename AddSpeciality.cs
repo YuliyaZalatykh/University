@@ -49,6 +49,8 @@ namespace University
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
+            comboBox1.Text = "";
+            comboBox2.Text = "";
             textBox6.Clear();
         }
 
@@ -59,7 +61,7 @@ namespace University
 
         private void AddSpeciality_Load(object sender, EventArgs e)
         {
-            DataTable SpecialityTable = controller.UpdateTable("Специальности");
+            DataTable SpecialityTable = controller.UpdateTable("Специальность");
             List<BO.Speciality> Specialities = Utils.Utils.SpecialityTableToList(SpecialityTable);
 
             deptCodes = new List<Object>();

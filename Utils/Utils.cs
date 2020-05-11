@@ -36,12 +36,12 @@ namespace University.Utils
 
             foreach (DataRow SpecialityRow in Table.Rows)
             {     
-                    int SpecCode = int.Parse(SpecialityRow["Код_спец"].ToString());
-                    string Name = SpecialityRow["Назв_спец"].ToString();
-                    string Qualification = SpecialityRow["Квалифик"].ToString();
-                    string StudyForm = SpecialityRow["Форма_обуч"].ToString();
-                    int DeptCode = int.Parse(SpecialityRow["Код_каф"].ToString());
-                    int Duration = int.Parse(SpecialityRow["Продолжительность"].ToString());
+                    int SpecCode = int.Parse(SpecialityRow["код специальности"].ToString());
+                    string Name = SpecialityRow["название"].ToString();
+                    string Qualification = SpecialityRow["квалификация"].ToString();
+                    string StudyForm = SpecialityRow["форма обучения"].ToString();
+                    int DeptCode = int.Parse(SpecialityRow["код кафедры"].ToString());
+                    int Duration = int.Parse(SpecialityRow["продолжительность"].ToString());
 
                     BO.Speciality speciality = new BO.Speciality(SpecCode, Name, Qualification, StudyForm, DeptCode, Duration);
                     specialities.Add(speciality);
@@ -55,15 +55,15 @@ namespace University.Utils
 
             foreach (DataRow row in Table.Rows)
             {
-                    int Code = int.Parse(row["Код_дисц"].ToString());
-                    string Name = row["Назв_дисц"].ToString();
-                    int Semest = int.Parse(row["Семестры"].ToString());
-                    int Hours = int.Parse(row["Часы"].ToString());
-                    int LabH = int.Parse(row["Лаб_зан"].ToString());
-                    int PractiseH = int.Parse(row["Практ_зан"].ToString());
-                    int CourseH = int.Parse(row["Курсовые"].ToString());
-                    string ReportType = row["Вид_отчет"].ToString();
-                    int SpecCode = int.Parse(row["Код_спец"].ToString());
+                    int Code = int.Parse(row["код дисциплины"].ToString());
+                    string Name = row["название"].ToString();
+                    int Semest = int.Parse(row["семестр"].ToString());
+                    int Hours = int.Parse(row["часы"].ToString());
+                    int LabH = int.Parse(row["лабораторные"].ToString());
+                    int PractiseH = int.Parse(row["практические"].ToString());
+                    int CourseH = int.Parse(row["курсовые"].ToString());
+                    string ReportType = row["отчет"].ToString();
+                    int SpecCode = int.Parse(row["код специальности"].ToString());
 
                     Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
                     disciplines.Add(discipline);

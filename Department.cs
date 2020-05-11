@@ -41,11 +41,11 @@ namespace University
 
         public void displayDisciplinesAndTotalAmountOfExams()
         {
-            int DepartmentCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["Код_каф"].Value.ToString());
+            int DepartmentCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["код кафедры"].Value.ToString());
 
             // найти специальности заданной кафедры
 
-            DataTable specialityTable = controller2.UpdateTable("Специальности");
+            DataTable specialityTable = controller2.UpdateTable("Специальность");
             List<BO.Speciality> specialities = Utils.Utils.SpecialityTableToList(specialityTable);
             List<BO.Speciality> DeptSpecialities = new List<BO.Speciality>();
 
