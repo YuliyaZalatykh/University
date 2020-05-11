@@ -80,9 +80,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 601);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(614, 20);
+            this.label1.Size = new System.Drawing.Size(613, 20);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Дисциплины с минимальной            и максимальной            продолжительностью";
+            this.label1.Text = "дисциплины с минимальной            и максимальной            продолжительностью";
             // 
             // panel1
             // 

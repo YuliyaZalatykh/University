@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSpeciality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSpeciality.Designer.cs">
+      <DependentUpon>AddSpeciality.cs</DependentUpon>
+    </Compile>
     <Compile Include="BO\Discipline.cs" />
     <Compile Include="BO\Speciality.cs" />
     <Compile Include="Controller\ConnectionString.cs" />
@@ -78,6 +84,9 @@
       <DependentUpon>Subject.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Utils.cs" />
+    <EmbeddedResource Include="AddSpeciality.resx">
+      <DependentUpon>AddSpeciality.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>

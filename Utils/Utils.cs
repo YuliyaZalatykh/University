@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.ComponentModel;
+using University.BO;
 
 namespace University.Utils
 {
@@ -27,6 +28,26 @@ namespace University.Utils
                 table.Rows.Add(values);
             }
             return table;
+        }
+
+        public static List<BO.Speciality> SpecialityTableToList(DataTable Table)
+        {
+            List<BO.Speciality> specialities = new List<BO.Speciality>();
+
+            foreach (DataRow SpecialityRow in Table.Rows)
+            {     
+                    int SpecCode = int.Parse(SpecialityRow["Код_спец"].ToString());
+                    string Name = SpecialityRow["Назв_спец"].ToString();
+                    string Qualification = SpecialityRow["Квалифик"].ToString();
+                    string StudyForm = SpecialityRow["Форма_обуч"].ToString();
+                    int DeptCode = int.Parse(SpecialityRow["Код_каф"].ToString());
+                    int Duration = int.Parse(SpecialityRow["Продолжительность"].ToString());
+
+                    BO.Speciality speciality = new BO.Speciality(SpecCode, Name, Qualification, StudyForm, DeptCode, Duration);
+                    specialities.Add(speciality);
+            }
+            return specialities;
+            
         }
     }
 }

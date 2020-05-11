@@ -39,16 +39,17 @@ namespace University
             dataGridView1.DataSource = dataTable;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void displayDisciplinesAndTotalAmountOfExams()
         {
             int DepartmentCode = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["Код_каф"].Value.ToString());
 
             DataTable specialityTable = controller2.UpdateTable("Специальности");
             List<BO.Speciality> specialities = new List<BO.Speciality>();
-            
-            foreach(DataRow SpecialityRow in specialityTable.Rows) {
+
+            foreach (DataRow SpecialityRow in specialityTable.Rows)
+            {
                 int DeptCode = int.Parse(SpecialityRow["Код_каф"].ToString());
-                if(DepartmentCode == DeptCode)
+                if (DepartmentCode == DeptCode)
                 {
                     int SpecCode = int.Parse(SpecialityRow["Код_спец"].ToString());
                     string Name = SpecialityRow["Назв_спец"].ToString();
@@ -60,8 +61,8 @@ namespace University
                     specialities.Add(speciality);
                 }
             }
-            
-            
+
+
             DataTable dataTable = controller3.UpdateTable("Дисциплина");
 
             List<Discipline> disciplines = new List<Discipline>();
@@ -98,6 +99,11 @@ namespace University
             textBox1.Text = totalAmountOfExams.ToString();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void Department_Load(object sender, EventArgs e)
         {
             button1_Click(sender, e);
@@ -105,7 +111,7 @@ namespace University
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            button2_Click(sender, e);
+            displayDisciplinesAndTotalAmountOfExams();
         }
     }
 }

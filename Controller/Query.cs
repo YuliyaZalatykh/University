@@ -30,5 +30,27 @@ namespace University.Controller
             connection.Close();
             return bufferTable;
         }
+
+        public void AddSpeciality(int SpecCode, string Name, string Qualification, string StudyForm, int DeptCode, int Duration)
+        {
+            connection.Open();
+            command = new OleDbCommand($"INSERT INTO Специальности(Код_спец, Назв_спец, Квалифик, Форма_обуч, Код_каф, Продолжительность) VALUES(@SpecCode, @Name, @Qualification, @StudyForm, @DeptCode, @Duration)", connection);
+            command.Parameters.AddWithValue("SpecCode", SpecCode);
+            command.Parameters.AddWithValue("Name", Name);
+            command.Parameters.AddWithValue("Qualification", Qualification);
+            command.Parameters.AddWithValue("StudyForm", StudyForm);
+            command.Parameters.AddWithValue("DeptCode", DeptCode);
+            command.Parameters.AddWithValue("Duration", Duration);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void DeleteSpecility(int SpecCode)
+        {
+            connection.Open();
+            command = new OleDbCommand($"DELETE FROM Специальности WHERE Код_спец = {SpecCode}", connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
