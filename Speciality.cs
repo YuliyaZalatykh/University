@@ -62,16 +62,22 @@ namespace University
             DataTable dataTable2 = Utils.Utils.ToDataTable(disciplines);
             dataGridView2.DataSource = dataTable2;
 
-            int labHoursAmount = 0;
-            int semestAmount = 0;
+            // найти семестровую нагрузку кафедры по специальности
+            int firstSemest = 0;
+            int secondSemest = 0;
             foreach (Discipline discipline in disciplines)
             {
-                labHoursAmount += discipline.LabH;
-                semestAmount += discipline.Semest;
+                switch (discipline.Semest)
+                {
+                    case 1: firstSemest += discipline.Hours;
+                        break;
+                    case 2: secondSemest += discipline.Hours;
+                        break;
+                }
             }
 
-            textBox1.Text = labHoursAmount.ToString();
-            textBox2.Text = semestAmount.ToString();
+            textBox1.Text = firstSemest.ToString();
+            textBox2.Text = secondSemest.ToString();
         }
     }
 }
