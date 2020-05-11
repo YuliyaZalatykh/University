@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\Discipline.cs" />
+    <Compile Include="BO\Speciality.cs" />
     <Compile Include="Controller\ConnectionString.cs" />
     <Compile Include="Controller\Query.cs" />
     <Compile Include="Dashboard.cs">
