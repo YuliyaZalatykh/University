@@ -60,7 +60,8 @@ namespace University
             // найти семестровую нагрузку кафедры по специальности
             int firstSemest = 0;
             int secondSemest = 0;
-            foreach (Discipline discipline in disciplines)
+            int labHours = 0;
+            foreach (Discipline discipline in specialityDisciplines)
             {
                 switch (discipline.Semest)
                 {
@@ -71,10 +72,12 @@ namespace University
                         secondSemest += discipline.Hours;
                         break;
                 }
+                labHours += discipline.LabH;
             }
 
             textBox1.Text = firstSemest.ToString();
             textBox2.Text = secondSemest.ToString();
+            textBox3.Text = labHours.ToString();
         }
 
         private void Speciality_Load(object sender, EventArgs e)

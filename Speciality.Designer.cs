@@ -43,6 +43,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -86,16 +88,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(585, 7);
+            this.textBox1.Location = new System.Drawing.Point(585, 8);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(55, 26);
+            this.textBox1.Size = new System.Drawing.Size(49, 26);
             this.textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(747, 10);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(73, 26);
+            this.textBox2.Size = new System.Drawing.Size(44, 26);
             this.textBox2.TabIndex = 5;
             // 
             // label1
@@ -178,6 +180,8 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(16, 474);
             this.panel3.Name = "panel3";
@@ -192,6 +196,22 @@
             this.label4.Size = new System.Drawing.Size(107, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "дисциплины:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(429, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(312, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "количество часов лабораторных работ:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(747, 3);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(44, 26);
+            this.textBox3.TabIndex = 9;
             // 
             // Speciality
             // 
@@ -232,5 +252,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label5;
     }
 }

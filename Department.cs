@@ -74,7 +74,10 @@ namespace University
                     {
                         SpecialityDisciplines.Add(discipline);
                         // TO DO: пересмотреть таблицу Дисциплина -> поле Тип отчета
-                        totalAmountOfExams += int.Parse(discipline.ReportType);
+                        if (!discipline.ReportType.Equals(""))
+                        {
+                            totalAmountOfExams += 1;
+                        }
                     }
                 }
             }
