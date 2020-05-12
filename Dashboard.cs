@@ -17,14 +17,14 @@ namespace University
             InitializeComponent();
             panel4.Top = button1.Top;
             panel4.Height = button1.Height;
-            subject2.BringToFront();
+            subject1.BringToFront();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             panel4.Top = button1.Top;
             panel4.Height = button1.Height;
-            subject2.BringToFront();
+            subject1.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace University
         {
             panel4.Top = button3.Top;
             panel4.Height = button3.Height;
-            department3.BringToFront();
+            department1.BringToFront();
         }
 
         private void faculty4_Load(object sender, EventArgs e)
