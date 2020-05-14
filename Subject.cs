@@ -1,99 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using University.Controller;
 using University.BO;
-using University.Utils;
 
 namespace University
 {
     public partial class Subject : UserControl
     {
 
-        Query controller;
-        List<Discipline> disciplines;
+        SubjectTable subjectTable;
 
 
         public Subject()
         {
+            Program.SubjectWindow = this;
             InitializeComponent();
-            controller = new Query(ConnectionString.ConnStr);
+            subjectTable = new SubjectTable();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.UpdateTable("Дисциплина");
-            dataGridView1.DataSource = dataTable;
-
-            disciplines = new List<Discipline>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                int Code = int.Parse(row["код дисциплины"].ToString());
-                string Name = row["название"].ToString();
-                int Semest = int.Parse(row["семестр"].ToString());
-                int Hours = int.Parse(row["часы"].ToString());
-                int LabH = int.Parse(row["лабораторные"].ToString());
-                int PractiseH = int.Parse(row["практические"].ToString());
-                int CourseH = int.Parse(row["курсовые"].ToString());
-                string ReportType = row["отчет"].ToString();
-                int SpecCode = int.Parse(row["код специальности"].ToString());
-                Discipline discipline = new Discipline(Code, Name, Semest, Hours, LabH, PractiseH, CourseH, ReportType, SpecCode);
-                disciplines.Add(discipline);
-            }
-
-            DataTable dataTable1 = Utils.Utils.ToDataTable(disciplines);
-            Utils.Utils.RenameTableColumns(dataTable1,
-                "код дисциплины, название, семестр, часы, лабораторные, " +
-                "практические, курсовые, тип отчета, код специальности");
-            dataGridView1.DataSource = dataTable1;
-
+            subjectTable.FillTable();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int minDuration = int.MaxValue;
-            int minDurationIndex = 0;
-            int maxDuration = int.MinValue;
-            int maxDurationIndex = 0;
-
-            // перебрать дисциплины и найти мин и макс часы
-            for(int i = 0; i < disciplines.Count; i++) 
-            {
-                if(disciplines[i].Hours < minDuration)
-                {
-                    minDuration = disciplines[i].Hours;
-                    minDurationIndex = i;
-                }
-                if(disciplines[i].Hours > maxDuration)
-                {
-                    maxDuration = disciplines[i].Hours;
-                    maxDurationIndex = i;
-                }
-            }
-
-            // раскрасить строки таблицы
-            for (int i = 0; i < 9; i++)
-            {
-                dataGridView1.Rows[minDurationIndex].Cells[i].Style.BackColor = Color.GreenYellow;
-                dataGridView1.Rows[maxDurationIndex].Cells[i].Style.BackColor = Color.Coral;
-            }
+            subjectTable.ShowMinAndMaxTotalHours();
         }
 
         private void Subject_Load(object sender, EventArgs e)
         {
-            button1_Click(sender, e);
+            subjectTable.RefreshTable();
+            subjectTable.CalculateTotalHours();
+            subjectTable.FillTable();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            button1_Click(sender, e);
+            subjectTable.FillTable();
         }
     }
 }

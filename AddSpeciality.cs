@@ -28,19 +28,19 @@ namespace University
             int SpecCode = int.Parse(textBox1.Text);
             string Name = textBox2.Text;
             string Qualification = textBox3.Text;
-            string StudyForm = comboBox1.Text;
+            string StudyForm = textBox4.Text;
             int DeptCode = int.Parse(comboBox2.Text);
-            int Duration = int.Parse(textBox6.Text);
-            try
-            {
-                controller.AddSpeciality(SpecCode, Name, Qualification, StudyForm, DeptCode, Duration);
+           // try
+           // {
+                controller.AddSpeciality(SpecCode, Name, Qualification, StudyForm, DeptCode);
                 MessageBox.Show("Специальность успешно добавлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Ошибка! Проверьте правильность заполнения полей", ex.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-            }
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show("Ошибка! Проверьте правильность заполнения полей" + ex.StackTrace, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            //    this.Close();
+            //}
             clearFields();
         }
 
@@ -49,9 +49,8 @@ namespace University
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
-            comboBox1.Text = "";
+            textBox4.Clear();
             comboBox2.Text = "";
-            textBox6.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -65,9 +64,9 @@ namespace University
             List<BO.Speciality> Specialities = Utils.Utils.SpecialityTableToList(SpecialityTable);
 
             deptCodes = new List<Object>();
-            foreach(BO.Speciality Speciality in Specialities)
+            foreach (BO.Speciality Speciality in Specialities)
             {
-                deptCodes.Add(Speciality.DepartmentCode);
+                deptCodes.Add(Speciality.departmentCode);
             }
             comboBox2.Items.AddRange(deptCodes.ToArray());
         }

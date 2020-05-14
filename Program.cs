@@ -8,6 +8,9 @@ namespace University
 {
     static class Program
     {
+        public static Subject SubjectWindow;
+        public static Speciality SpecialityWindow;
+        public static Department DepartmentWindow;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

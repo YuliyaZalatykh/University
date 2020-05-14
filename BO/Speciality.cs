@@ -8,21 +8,19 @@ namespace University.BO
 {
     class Speciality
     {
-        public int Code { get; set; }
-        public string Name { get; set; }
-        public string Qualification { get; set; }
-        public string StudyForm { get; set; }
-        public int DepartmentCode { get; set; }
-        public int Duration { get; set; }
+        public int code { get; set; }
+        public string name { get; set; }
+        public string qualification { get; set; }
+        public string educationForm { get; set; }
+        public int departmentCode { get; set; }
 
-        public Speciality(int Code, string Name, string Qualification, string StudyForm, int DepartmentCode, int Duration)
+        public Speciality(int code, string name, string qualification, string educationForm, int departmentCode)
         {
-            this.Code = Code;
-            this.Name = Name;
-            this.Qualification = Qualification;
-            this.StudyForm = StudyForm;
-            this.DepartmentCode = DepartmentCode;
-            this.Duration = Duration;
+            this.code = code;
+            this.name = name;
+            this.qualification = qualification;
+            this.educationForm = educationForm;
+            this.departmentCode = departmentCode;
         }
     }
 }

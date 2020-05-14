@@ -53,7 +53,11 @@
     <Compile Include="AddSpeciality.Designer.cs">
       <DependentUpon>AddSpeciality.cs</DependentUpon>
     </Compile>
-    <Compile Include="BO\Discipline.cs" />
+    <Compile Include="BO\Department.cs" />
+    <Compile Include="BO\DepartmentTable.cs" />
+    <Compile Include="BO\SpecialityTable.cs" />
+    <Compile Include="BO\Subject.cs" />
+    <Compile Include="BO\SubjectTable.cs" />
     <Compile Include="BO\Speciality.cs" />
     <Compile Include="Controller\ConnectionString.cs" />
     <Compile Include="Controller\Query.cs" />
