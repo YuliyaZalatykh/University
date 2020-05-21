@@ -14,6 +14,7 @@ namespace University
     {
         public Dashboard()
         {
+            Program.DashboardWindow = this;
             InitializeComponent();
             panel4.Top = button1.Top;
             panel4.Height = button1.Height;

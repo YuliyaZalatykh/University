@@ -8,6 +8,8 @@ namespace University
 {
     static class Program
     {
+        public static Login LoginWindow;
+        public static Dashboard DashboardWindow;
         public static Subject SubjectWindow;
         public static Speciality SpecialityWindow;
         public static Department DepartmentWindow;
@@ -19,7 +21,7 @@ namespace University
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Application.Run(new Login());
         }
     }
 }

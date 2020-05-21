@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Data;
+using University.BO;
 
 namespace University.Controller
 {
@@ -18,6 +19,26 @@ namespace University.Controller
         {
             connection = new OleDbConnection(Conn);
             bufferTable = new DataTable();
+        }
+
+
+        public User GetUserByLogin(string login)
+        {
+            string selectQuery = String.Format("SELECT * FROM [Пользователи]");
+            dataAdapter = new OleDbDataAdapter(selectQuery, connection);
+            bufferTable.Clear();
+            dataAdapter.Fill(bufferTable);
+            connection.Close();
+            User user = new User(login);
+            foreach (DataRow row in bufferTable.Rows)
+            {
+                if (row["логин"].ToString().Equals(login))
+                {
+                    string password = row["пароль"].ToString();
+                    user.password = password;
+                }
+            }
+            return user;
         }
 
         public DataTable UpdateTable(string tableName)
