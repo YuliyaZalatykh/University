@@ -30,25 +30,26 @@ namespace University.BO
                 string name = row[1].ToString();
                 string phone = row[2].ToString();
                 int facultyCode = int.Parse(row[3].ToString());
-                int chiefCode = int.Parse(row[4].ToString());
-                Department department = new Department(code, name, phone, facultyCode, chiefCode);
+                Department department = new Department(code, name, phone, facultyCode);
                 departments.Add(department);
             }
+            Program.DepartmentWindow.dataGridView2.Rows.Clear();
+            Program.DepartmentWindow.dataGridView2.Columns.Clear();
         }
 
         public void FillTable()
         {
             DataTable dataTable = Utils.Utils.ToDataTable(departments);
             Utils.Utils.RenameTableColumns(dataTable,
-                "код кафедры, название, телефоны, код факультета, код заведующего");
+                "код кафедры, название, телефоны, код факультета");
             Program.DepartmentWindow.dataGridView1.DataSource = dataTable;
         }
 
         public void DisplayDisciplinesAndTotalAmountOfExams()
         {
-            int departmentCode = int.Parse(Program.DepartmentWindow.dataGridView1.Rows[Program.DepartmentWindow.dataGridView1.CurrentRow.Index].Cells["код кафедры"].Value.ToString());
+            int facultyCode = int.Parse(Program.DepartmentWindow.dataGridView1.Rows[Program.DepartmentWindow.dataGridView1.CurrentRow.Index].Cells["код кафедры"].Value.ToString());
 
-            DataTable dataTable = specialityQuery.SelectSpecialitiesByDeptCode(departmentCode);
+            DataTable dataTable = specialityQuery.SelectSubjectsByDepartmentCode(facultyCode);
 
             List<Subject> subjects = new List<Subject>();
             
@@ -56,24 +57,13 @@ namespace University.BO
 
             foreach (DataRow row in dataTable.Rows)
             {
-                int specialityCode = int.Parse(row["код специальности"].ToString());
-                DataTable subjectsDataTable = subjectQuery.SelectSubjectByCode(specialityCode, false);
+                int subjectCode = int.Parse(row["код дисциплины"].ToString());
+                string subjectName = row["название"].ToString();
+                DataTable subjectsDataTable = subjectQuery.SelectSubjectByCode(subjectCode, true);
                 foreach (DataRow subjectRow in subjectsDataTable.Rows)
                 {
-                    int subjectCode = int.Parse(subjectRow["код дисциплины"].ToString());
-                    string subjectName = subjectQuery1.SelectSubject(subjectCode).Rows[0].ItemArray[1].ToString();
-                    int semester = int.Parse(subjectRow["семестры"].ToString());
-                    int hours = int.Parse(subjectRow["часы"].ToString());
-                    int labHours = int.Parse(subjectRow["лабораторные"].ToString());
-                    int practiseHours = int.Parse(subjectRow["практические"].ToString());
-                    int courseHours = int.Parse(subjectRow["курсовые"].ToString());
                     string report = subjectRow["отчет"].ToString();
-                    Subject subject = new Subject(subjectCode, subjectName);
-                    subject.semester = semester;
-                    subject.hours = hours;
-                    subject.labHours = labHours;
-                    subject.practiseHours = practiseHours;
-                    subject.courseHours = courseHours;
+                    Subject subject = new Subject(subjectCode, subjectName, 0);
                     subject.report = report;
                     subjects.Add(subject);
 
@@ -84,11 +74,8 @@ namespace University.BO
                 }
             }
 
-            DataTable subjectsTable = Utils.Utils.ToDataTable(subjects);
-            subjectsTable.Columns.Remove("totalHours");
-            Utils.Utils.RenameTableColumns(subjectsTable,
-                    "код дисциплины, название, семестры, часы, лабораторные, практические, курсовые, отчет");
-            Program.DepartmentWindow.dataGridView2.DataSource = subjectsTable;
+            dataTable.Columns.Remove("код кафедры");
+            Program.DepartmentWindow.dataGridView2.DataSource = dataTable;
 
             Program.DepartmentWindow.textBox1.Text = totalAmountOfExams.ToString();
         }

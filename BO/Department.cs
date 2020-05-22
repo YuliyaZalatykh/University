@@ -12,15 +12,13 @@ namespace University.BO
         public string name { get; set; }
         public string phone { get; set; }
         public int facultyCode { get; set; }
-        public int chiefCode { get; set; }
 
-        public Department(int code, string name, string phone, int facultyCode, int chiefCode)
+        public Department(int code, string name, string phone, int facultyCode)
         {
             this.code = code;
             this.name = name;
             this.phone = phone;
             this.facultyCode = facultyCode;
-            this.chiefCode = chiefCode;
         }
     }
 }

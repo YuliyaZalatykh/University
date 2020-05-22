@@ -28,7 +28,8 @@ namespace University.BO
             {
                 int code = int.Parse(row[0].ToString());
                 string name = row[1].ToString();
-                Subject subject = new Subject(code, name);
+                int departmentCode = int.Parse(row[2].ToString());
+                Subject subject = new Subject(code, name, departmentCode);
                 subjects.Add(subject);
             }
         }
@@ -43,7 +44,7 @@ namespace University.BO
             dataTable.Columns.Remove("courseHours");
             dataTable.Columns.Remove("report");
             Utils.Utils.RenameTableColumns(dataTable,
-                "код дисциплины, название, общее кол-во часов");
+                "код дисциплины, название, код кафедры, общее кол-во часов");
             Program.SubjectWindow.dataGridView1.DataSource = dataTable;
         }
 

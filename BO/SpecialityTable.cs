@@ -59,14 +59,16 @@ namespace University.BO
             foreach (DataRow row in dataTable.Rows)
             {
                 int subjectCode = int.Parse(row["код дисциплины"].ToString());
-                string subjectName = specialityQuery.SelectSubject(subjectCode).Rows[0].ItemArray[1].ToString();
+                DataTable subjectInfo = specialityQuery.SelectSubject(subjectCode);
+                string subjectName = subjectInfo.Rows[0].ItemArray[1].ToString();
+
                 int semester = int.Parse(row["семестры"].ToString());
                 int hours = int.Parse(row["часы"].ToString());
                 int labHours = int.Parse(row["лабораторные"].ToString());
                 int practiseHours = int.Parse(row["практические"].ToString());
                 int courseHours = int.Parse(row["курсовые"].ToString());
                 string report = row["отчет"].ToString();
-                Subject subject = new Subject(subjectCode, subjectName);
+                Subject subject = new Subject(subjectCode, subjectName, 0);
                 subject.semester = semester;
                 subject.hours = hours;
                 subject.labHours = labHours;
@@ -77,6 +79,7 @@ namespace University.BO
             }
 
             DataTable subjectsTable = Utils.Utils.ToDataTable(subjects);
+            subjectsTable.Columns.Remove("departmentCode");
             subjectsTable.Columns.Remove("totalHours");
             Utils.Utils.RenameTableColumns(subjectsTable,
                     "код дисциплины, название, семестры, часы, лабораторные, практические, курсовые, отчет");

@@ -52,10 +52,10 @@ namespace University.Controller
             return bufferTable;
         }
 
-        public DataTable SelectSpecialitiesByDeptCode(int code)
+        public DataTable SelectSubjectsByDepartmentCode(int code)
         {
             connection.Open();
-            string selectQuery = String.Format("SELECT * FROM [специальность] WHERE [код кафедры] = {0}", code);
+            string selectQuery = String.Format("SELECT * FROM Дисциплина WHERE [код кафедры] = {0}", code);
             dataAdapter = new OleDbDataAdapter(selectQuery, connection);
             bufferTable.Clear();
             dataAdapter.Fill(bufferTable);
