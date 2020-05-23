@@ -12,15 +12,15 @@ namespace University.BO
         public string name { get; set; }
         public string qualification { get; set; }
         public string educationForm { get; set; }
-        public int departmentCode { get; set; }
+        public int facultyCode { get; set; }
 
-        public Speciality(int code, string name, string qualification, string educationForm, int departmentCode)
+        public Speciality(int code, string name, string qualification, string educationForm, int facultyCode)
         {
             this.code = code;
             this.name = name;
             this.qualification = qualification;
             this.educationForm = educationForm;
-            this.departmentCode = departmentCode;
+            this.facultyCode = facultyCode;
         }
     }
 }

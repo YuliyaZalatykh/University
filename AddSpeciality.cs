@@ -15,7 +15,6 @@ namespace University
     public partial class AddSpeciality : Form
     {
         Query controller;
-        List<Object> deptCodes;
 
         public AddSpeciality()
         {
@@ -30,17 +29,17 @@ namespace University
             string Qualification = textBox3.Text;
             string StudyForm = textBox4.Text;
             int DeptCode = int.Parse(comboBox2.Text);
-           // try
-           // {
+            try
+            {
                 controller.AddSpeciality(SpecCode, Name, Qualification, StudyForm, DeptCode);
                 MessageBox.Show("Специальность успешно добавлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show("Ошибка! Проверьте правильность заполнения полей" + ex.StackTrace, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            //    this.Close();
-            //}
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка! Проверьте правильность заполнения полей" + ex.StackTrace, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this.Close();
+            }
             clearFields();
         }
 
@@ -63,12 +62,13 @@ namespace University
             DataTable SpecialityTable = controller.UpdateTable("Специальность");
             List<BO.Speciality> Specialities = Utils.Utils.SpecialityTableToList(SpecialityTable);
 
-            deptCodes = new List<Object>();
+            HashSet<Object> facultyCodes = new HashSet<object>();
+
             foreach (BO.Speciality Speciality in Specialities)
             {
-                deptCodes.Add(Speciality.departmentCode);
+                facultyCodes.Add(Speciality.facultyCode);
             }
-            comboBox2.Items.AddRange(deptCodes.ToArray());
+            comboBox2.Items.AddRange(facultyCodes.ToArray());
         }
     }
 }

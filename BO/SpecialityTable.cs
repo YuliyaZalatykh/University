@@ -34,8 +34,8 @@ namespace University.BO
                 string name = row[1].ToString();
                 string qualification = row[2].ToString();
                 string educationForm = row[3].ToString();
-                int departmentCode = int.Parse(row[4].ToString());
-                Speciality speciality = new Speciality(code, name, qualification, educationForm, departmentCode);
+                int facultyCode = int.Parse(row[4].ToString());
+                Speciality speciality = new Speciality(code, name, qualification, educationForm, facultyCode);
                 specialities.Add(speciality);
             }
         }
@@ -44,7 +44,7 @@ namespace University.BO
         {
             DataTable dataTable = Utils.Utils.ToDataTable(specialities);
             Utils.Utils.RenameTableColumns(dataTable,
-                "код специальности, название, квалификация, форма, код кафедры");
+                "код специальности, название, квалификация, форма, код факультета");
             Program.SpecialityWindow.dataGridView1.DataSource = dataTable;
         }
 

@@ -36,13 +36,13 @@ namespace University.Utils
 
             foreach (DataRow SpecialityRow in Table.Rows)
             {     
-                    int SpecCode = int.Parse(SpecialityRow["код специальности"].ToString());
-                    string Name = SpecialityRow["название"].ToString();
-                    string Qualification = SpecialityRow["квалификация"].ToString();
-                    string StudyForm = SpecialityRow["форма обучения"].ToString();
-                    int DeptCode = int.Parse(SpecialityRow["код кафедры"].ToString());
+                    int specialityCode = int.Parse(SpecialityRow["код специальности"].ToString());
+                    string name = SpecialityRow["название"].ToString();
+                    string qualification = SpecialityRow["квалификация"].ToString();
+                    string studyForm = SpecialityRow["форма обучения"].ToString();
+                    int facultyCode = int.Parse(SpecialityRow["код факультета"].ToString());
 
-                    BO.Speciality speciality = new BO.Speciality(SpecCode, Name, Qualification, StudyForm, DeptCode);
+                    BO.Speciality speciality = new BO.Speciality(specialityCode, name, qualification, studyForm, facultyCode);
                     specialities.Add(speciality);
             }
             return specialities;

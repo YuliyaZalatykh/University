@@ -63,15 +63,15 @@ namespace University.Controller
             return bufferTable;
         }
 
-        public void AddSpeciality(int SpecCode, string Name, string Qualification, string StudyForm, int DeptCode)
+        public void AddSpeciality(int specialityCode, string name, string qualification, string studyForm, int facultyCode)
         {
             connection.Open();
-            command = new OleDbCommand($"INSERT INTO Специальность([код специальности], название, квалификация, [форма обучения], [код кафедры]) VALUES(@SpecCode, @Name, @Qualification, @StudyForm, @DeptCode)", connection);
-            command.Parameters.AddWithValue("SpecCode", SpecCode);
-            command.Parameters.AddWithValue("Name", Name);
-            command.Parameters.AddWithValue("Qualification", Qualification);
-            command.Parameters.AddWithValue("StudyForm", StudyForm);
-            command.Parameters.AddWithValue("DeptCode", DeptCode);
+            command = new OleDbCommand($"INSERT INTO Специальность([код специальности], название, квалификация, [форма обучения], [код факультета]) VALUES(@specialityCode, @name, @qualification, @studyForm, @facultyCode)", connection);
+            command.Parameters.AddWithValue("speicalityCode", specialityCode);
+            command.Parameters.AddWithValue("name", name);
+            command.Parameters.AddWithValue("qualification", qualification);
+            command.Parameters.AddWithValue("studyForm", studyForm);
+            command.Parameters.AddWithValue("facultyCode", facultyCode);
             command.ExecuteNonQuery();
             connection.Close();
         }
