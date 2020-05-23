@@ -39,9 +39,9 @@ namespace University
                 txtUsername.Focus();
                 return;
             }
-            //try
-            //{
-                // закодировать пароль
+            try
+            {
+ 
                 string password = Eramake.eCryptography.Encrypt(txtPassword.Text);
 
                 User user = query.GetUserByLogin(txtUsername.Text);
@@ -57,11 +57,11 @@ namespace University
                 {
                     MessageBox.Show("Вы ввели неверный логин и/или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
     }
 }

@@ -88,25 +88,25 @@ namespace University.BO
 
         public void CalculateCapacity()
         {
-            int firstSemest = 0;
-            int secondSemest = 0;
+            int firstSemester = 0;
+            int secondSemester = 0;
             int labHours = 0;
             foreach (Subject subject in subjects)
             {
                 switch (subject.semester)
                 {
                     case 1:
-                        firstSemest += subject.hours;
+                        firstSemester += subject.hours;
                         break;
                     case 2:
-                        secondSemest += subject.hours;
+                        secondSemester += subject.hours;
                         break;
                 }
                 labHours += subject.labHours;
             }
 
-            Program.SpecialityWindow.textBox1.Text = firstSemest.ToString();
-            Program.SpecialityWindow.textBox2.Text = secondSemest.ToString();
+            Program.SpecialityWindow.textBox1.Text = firstSemester.ToString();
+            Program.SpecialityWindow.textBox2.Text = secondSemester.ToString();
             Program.SpecialityWindow.textBox3.Text = labHours.ToString();
         }
 

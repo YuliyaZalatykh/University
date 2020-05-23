@@ -33,8 +33,6 @@ namespace University.BO
                 Department department = new Department(code, name, phone, facultyCode);
                 departments.Add(department);
             }
-            Program.DepartmentWindow.dataGridView2.Rows.Clear();
-            Program.DepartmentWindow.dataGridView2.Columns.Clear();
         }
 
         public void FillTable()
@@ -76,7 +74,6 @@ namespace University.BO
 
             dataTable.Columns.Remove("код кафедры");
             Program.DepartmentWindow.dataGridView2.DataSource = dataTable;
-
             Program.DepartmentWindow.textBox1.Text = totalAmountOfExams.ToString();
         }
     }
