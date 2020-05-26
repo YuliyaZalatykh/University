@@ -27,7 +27,7 @@ namespace University
             int SpecCode = int.Parse(textBox1.Text);
             string Name = textBox2.Text;
             string Qualification = textBox3.Text;
-            string StudyForm = textBox4.Text;
+            string StudyForm = comboBox1.Text;
             int DeptCode = int.Parse(comboBox2.Text);
             try
             {
@@ -48,7 +48,7 @@ namespace University
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
-            textBox4.Clear();
+            comboBox1.Text = "";
             comboBox2.Text = "";
         }
 
